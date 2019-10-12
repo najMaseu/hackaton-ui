@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from "axios"
 
 const App: React.FC = () => {
-
-  axios.get("http://patyk.herokuapp.com").then(resp => console.log(resp.data))
+  const [papiesz, setpapiesz] = useState()
+  axios.get("/api").then(resp => setpapiesz(resp.data))
 
   return (
     <div className="App">
-      <h1>Chuj</h1>
+      <h1>{papiesz}</h1>
     </div>
   );
 }
