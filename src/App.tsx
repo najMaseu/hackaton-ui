@@ -2,7 +2,6 @@ import React from "react";
 import { css, injectGlobal } from "emotion";
 import { Provider } from "react-redux";
 import background from "./img/background.jpg";
-import { AddOfferForm } from "./components/AddOfferForm/AddOfferForm";
 import { store } from "./store/store";
 import {
   BrowserRouter as Router,
@@ -11,6 +10,7 @@ import {
 
 import { Offers } from "./views/Offers";
 import { Homepage } from "./views/Homepage";
+import { NewOffer } from './views/NewOffer';
 
 injectGlobal`
     @fontface {
@@ -67,7 +67,7 @@ const App: React.FC = () => {
         <div className={baseStyle}>
           <Route exact path="/" component={Homepage}/>
           <Route exact path="/offers" component={Offers}/>
-          <Route exact path="/add-offer" component={AddOfferForm}/>
+          <Route exact path="/add-offer" component={NewOffer}/>
         </div>
       </Router>
     </Provider>
@@ -77,6 +77,7 @@ const App: React.FC = () => {
 const baseStyle = css({
   position: "fixed",
   backgroundImage: `url(${background})`,
+  backgroundRepeat: "no-repeat",
   backgroundSize: "contain",
   width: "100vw",
   height: "100vw",

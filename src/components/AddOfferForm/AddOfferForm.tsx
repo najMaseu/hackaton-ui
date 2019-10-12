@@ -4,6 +4,7 @@ import { css } from 'emotion';
 import { Colors } from '../../consts';
 import { InputRadio, InputRadioOption } from '../InputRadio/InputRadio';
 import { InputArea } from '../InputArea/InputArea';
+import { Button } from '../Button/Button';
 
 export const AddOfferForm = () => {
     return (
@@ -12,16 +13,12 @@ export const AddOfferForm = () => {
                 <h1 className={header}>
                     Add Offer!
                 </h1>
-                <input 
-                onChange={(e: any) => {console.log(e.target.value)}}
-                type="text"
-                value="dsaas"
-                />
                 <InputText onChange={(e: React.ChangeEvent<HTMLInputElement>) => {console.log(e.target.value)}}label={"Title"} variant="green"/>
                 <InputText onChange={() => {}} label={"Street"} variant="green"/>
                 <InputText onChange={() => {}} label={"City"} variant="green"/>
                 <InputRadio options={radioOptions}/>
                 <InputArea onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {console.log(e.target.value)}}label={"Title"} variant="green"/>
+                <Button  onClick={() => {console.log("dsfkjafkjadkjf")}}>Add Offer!</Button>
             </div>
         </div>
     )
@@ -29,7 +26,7 @@ export const AddOfferForm = () => {
 
 const formContainer = css({
     background: "rgba(255,255,255,0.8)",
-    width: "60%",
+    width: "100%",
     height: "100vh",
     display: "flex",
     flexDirection: "column",

@@ -22,6 +22,7 @@ const buttonStyles = css({
   fontWeight: 'lighter',
   fontSize: 32,
   padding: 20,
+  fontFamily: "Mansalva",
   marginTop: 10,
   '&:hover': {
     opacity: 0.85
