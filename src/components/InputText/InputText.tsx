@@ -15,12 +15,13 @@ export const InputText: React.FC<InputTextProps> = ({label, variant}) => {
                 className={input(variant)} type="text"/>
         </div>
     )
-}
+};
 
 const inputContainer = (color: string) => css({
     borderBottom: `3px solid ${color === Colors.white ? Colors.white : Colors.greenDark}`,
     width: "100%"
-})
+});
+
 const input = (color: string) => css({
     background: "transparent",
     outline:"none",
