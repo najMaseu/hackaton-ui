@@ -7,8 +7,10 @@ import { store } from "./store/store";
 import {
   BrowserRouter as Router,
   Route,
-  Link
 } from "react-router-dom";
+
+import { Offers } from "./views/Offers";
+import { Homepage } from "./views/Homepage";
 
 injectGlobal`
     @fontface {
@@ -63,7 +65,9 @@ const App: React.FC = () => {
     <Provider store={store}>
       <Router>
         <div className={baseStyle}>
-          <Route exact path="/" component={AddOfferForm}/>
+          <Route exact path="/" component={Homepage}/>
+          <Route exact path="/offers" component={Offers}/>
+          <Route exact path="/add-offer" component={AddOfferForm}/>
         </div>
       </Router>
     </Provider>
