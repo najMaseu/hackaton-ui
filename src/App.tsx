@@ -1,7 +1,14 @@
-import React from 'react';
-import { css, injectGlobal } from 'emotion'
-import background from "./img/background.jpg"
-import { AddOfferForm } from './components/AddOfferForm/AddOfferForm';
+import React from "react";
+import { css, injectGlobal } from "emotion";
+import { Provider } from "react-redux";
+import background from "./img/background.jpg";
+import { AddOfferForm } from "./components/AddOfferForm/AddOfferForm";
+import { store } from "./store/store";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from "react-router-dom";
 
 injectGlobal`
     @fontface {
@@ -53,11 +60,15 @@ injectGlobal`
 
 const App: React.FC = () => {
   return (
-    <div className={baseStyle}>
-      <AddOfferForm/>
-    </div>
+    <Provider store={store}>
+      <Router>
+        <div className={baseStyle}>
+          <Route exact path="/" component={AddOfferForm}/>
+        </div>
+      </Router>
+    </Provider>
   );
-}
+};
 
 const baseStyle = css({
   position: "fixed",
@@ -66,6 +77,6 @@ const baseStyle = css({
   width: "100vw",
   height: "100vw",
   fontFamily: "Mansalva"
-})
+});
 
 export default App;
