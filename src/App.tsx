@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import axios from "axios"
-import { Global, css } from '@emotion/core'
+import React from 'react';
+import { css, injectGlobal } from 'emotion'
+import background from "./img/background.jpg"
+import { AddOfferForm } from './components/AddOfferForm/AddOfferForm';
 
-const App: React.FC = () => {
-  const [papiesz, setpapiesz] = useState()
-  axios.get("/api").then(resp => setpapiesz(resp.data))
-
-  const reset = css`
+injectGlobal`
+    @fontface {
+      font-family: 'Bungee Inline', cursive;
+      src: url('https://fonts.googleapis.com/css?family=Mansalva&display=swap')
+    }
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
     a, abbr, acronym, address, big, cite, code,
@@ -50,15 +51,21 @@ const App: React.FC = () => {
       border-spacing: 0;
     }`;
 
-
+const App: React.FC = () => {
   return (
-    <>
-    <Global styles={reset} />
-    <div className="App">
-      <h1>{papiesz}</h1>
+    <div className={baseStyle}>
+      <AddOfferForm/>
     </div>
-   </>
   );
 }
+
+const baseStyle = css({
+  position: "fixed",
+  backgroundImage: `url(${background})`,
+  backgroundSize: "contain",
+  width: "100vw",
+  height: "100vw",
+  fontFamily: "Mansalva"
+})
 
 export default App;
