@@ -1,19 +1,21 @@
 import React, { CSSProperties } from "react";
-import { css } from "emotion";
+import { css, cx } from "emotion";
+import { Colors } from '../../consts';
 
 interface ButtonProps {
   onClick(): void;
   disabled?: boolean;
   style?: CSSProperties
+  className?: string
 }
 
-export const Button: React.FC<ButtonProps> = ({onClick, children, disabled, style}) => (
-  <button style={style} className={buttonStyles} disabled={disabled} onClick={onClick}>{children}</button>
+export const Button: React.FC<ButtonProps> = ({onClick, children, disabled, style, className}) => (
+  <button style={style} className={cx(buttonStyles, className)} disabled={disabled} onClick={onClick}>{children}</button>
 );
 
 const buttonStyles = css({
   display: 'block',
-  background: "#3BAC40",
+  background: Colors.greenDark,
   transitionDuration: '0.3s',
   border: "none",
   maxWidth: "320px",
@@ -23,8 +25,9 @@ const buttonStyles = css({
   fontSize: 32,
   padding: 20,
   fontFamily: "Mansalva",
+  outline: "none",
   marginTop: 10,
   '&:hover': {
-    opacity: 0.85
+    opacity: 0.85,
   }
 });

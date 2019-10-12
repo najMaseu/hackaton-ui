@@ -33,7 +33,9 @@ const input = (color: string) => css({
     borderColor: color === Colors.white ? Colors.white : Colors.greenDark ,
     width: "100%",
     color: color === Colors.white ? Colors.white : Colors.greenDark ,
-    fontFamily: "Mansalva",
+    fontFamily: "system-ui",
+    fontWeight: "lighter",
+    fontSize: ".9em",
     height: "100%",
     "&::placeholder": {
         color: color === Colors.white ? Colors.white : Colors.greenDark

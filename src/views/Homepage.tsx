@@ -3,7 +3,6 @@ import { Container } from "../components/Container/Container";
 import { Button } from "../components/Button/Button";
 import { css } from "emotion";
 import { useHistory } from "react-router-dom";
-import { getOffers } from "../_api/requests";
 
 
 export const Homepage = () => {
@@ -24,7 +23,7 @@ export const Homepage = () => {
             <h2 className={slogan}>Don't waste!</h2>
         </div>
         <div>
-          <Button onClick={getOffers}>search</Button>
+          <Button onClick={goTo("/offers")}>search</Button>
           <Button onClick={goTo('/add-offer')}>add offer</Button>
         </div>
       </section>
@@ -36,7 +35,7 @@ export const Homepage = () => {
 const homepageSection = css({
   display: 'flex',
   justifyContent: 'space-between',
-  marginTop: '25%'
+  marginTop: "calc(50vh - 100px)"
 });
 
 const logo = css({

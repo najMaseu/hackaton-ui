@@ -15,9 +15,11 @@ export const AddOfferForm = () => {
                 </h1>
                 <InputText onChange={(e: React.ChangeEvent<HTMLInputElement>) => {console.log(e.target.value)}}label={"Title"} variant="green"/>
                 <InputText onChange={() => {}} label={"Street"} variant="green"/>
+                <InputText onChange={() => {}} label={"Home number"} variant="green" type={"number"}/>
                 <InputText onChange={() => {}} label={"City"} variant="green"/>
+                <InputText onChange={() => {}} label={"Phone Number"} variant="green" type={"number"}/>
                 <InputRadio options={radioOptions}/>
-                <InputArea onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {console.log(e.target.value)}}label={"Title"} variant="green"/>
+                <InputArea onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {console.log(e.target.value)}}label={"Description"} variant="green"/>
                 <Button  onClick={() => {console.log("dsfkjafkjadkjf")}}>Add Offer!</Button>
             </div>
         </div>
@@ -46,7 +48,7 @@ const form = css ({
 
 const header = css({
     color: Colors.greenDark,
-    fontSize: "2em"
+    fontSize: "3em"
 })
 
 const radioOptions: InputRadioOption[] = [
