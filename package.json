@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://patyk.herokuapp.com",
   "dependencies": {
+    "@emotion/core": "^10.0.21",
     "@types/axios": "^0.14.0",
     "@types/jest": "24.0.18",
     "@types/node": "12.7.12",
