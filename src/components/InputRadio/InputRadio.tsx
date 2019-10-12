@@ -1,5 +1,6 @@
 import React from 'react';
 import { css } from 'emotion';
+import { Colors } from '../../consts';
 
 interface InputRadioProps {
     options: InputRadioOption[]
@@ -30,5 +31,7 @@ export const InputRadio: React.FC<InputRadioProps> = ({options}) => {
 }
 
 const radioContainer = css({
-    
+    fontSize: "1.5em",
+    color: Colors.greenDark
 })
+
