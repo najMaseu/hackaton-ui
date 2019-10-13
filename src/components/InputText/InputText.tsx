@@ -7,10 +7,11 @@ interface InputTextProps {
     variant: "green" | "white"
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
     type?: string;
-    required?: boolean
+    required?: boolean;
+    name: string
 }
 
-export const InputText: React.FC<InputTextProps> = ({label, variant, onChange, type="text", required=false}) => {
+export const InputText: React.FC<InputTextProps> = ({name,label, variant, onChange, type="text", required=false}) => {
     return(
         <div className={inputContainer(variant)}>
                 <input 
@@ -19,6 +20,7 @@ export const InputText: React.FC<InputTextProps> = ({label, variant, onChange, t
                 className={input(variant)} 
                 type={type}
                 required={required}
+                name={name}
                 />
         </div>
     )

@@ -1,15 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { InputText } from '../InputText/InputText';
 import { css } from 'emotion';
 import { Colors } from '../../consts';
 import { InputRadio, InputRadioOption } from '../InputRadio/InputRadio';
 import { InputArea } from '../InputArea/InputArea';
 import { Button } from '../Button/Button';
+import { postOffer } from '../../_api/requests';
+
+export interface FormValues {
+    title: string;
+    city: string;
+    homeNumber: string;
+    description: string;
+    street: string;
+    expiration: string
+}
 
 export const AddOfferForm = () => {
-    const [formVals, setFormVals] = useState({})
+    const [formVals, setFormVals] = useState<any>({
+        title: "",
+        city: "",
+        homeNumber: "",
+        description: "",
+        street: "" ,
+        expirationStatus: "",
+        phoneNumber: ""
+    })
 
-    
+    useEffect(() => {
+        console.log(formVals)
+    }, [formVals])
+
+    const handleSubmit = async () => {
+        try{
+            await postOffer(formVals)
+        } catch (e){
+            alert(e)
+        }
+    }
+
+    const handleFormValues = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setFormVals({
+            ...formVals,
+            [e.target.name]: String(e.target.value)
+        })
+    }
 
     return (
         <div className={formContainer}>
@@ -17,14 +52,14 @@ export const AddOfferForm = () => {
                 <h1 className={header}>
                     Add Offer!
                 </h1>
-                <InputText onChange={(e: React.ChangeEvent<HTMLInputElement>) => {console.log(e.target.value)}}label={"Title"} variant="green"/>
-                <InputText onChange={() => {}} label={"Street"} variant="green" required={true}/>
-                <InputText onChange={() => {}} label={"Home number"} variant="green" type={"number"} required={true}/>
-                <InputText onChange={() => {}} label={"City"} variant="green" required={true}/>
-                <InputText onChange={() => {}} label={"Phone Number"} variant="green" type={"number"} required={true}/>
-                <InputRadio options={radioOptions}/>
-                <InputArea onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {console.log(e.target.value)}}label={"Description"} variant="green" required={true}/>
-                <Button  className={buttonStyle} onClick={() => {console.log("dsfkjafkjadkjf")}} type={"submit"}>Add Offer!</Button>
+                <InputText name={"title"} onChange={handleFormValues} label={"Title"} variant="green"/>
+                <InputText name={"street"} onChange={handleFormValues} label={"Street"} variant="green" required={true}/>
+                <InputText name={"homeNumber"} onChange={handleFormValues} label={"Home number"} variant="green" type={"number"} required={true}/>
+                <InputText name={"city"} onChange={handleFormValues} label={"City"} variant="green" required={true}/>
+                <InputText name={"phoneNumber"} onChange={handleFormValues} label={"Phone Number"} variant="green" type={"number"} required={true}/>
+                <InputRadio name={"expirationStatus"} onChange={handleFormValues} options={radioOptions}/>
+                <InputArea name={"description"} onChange={handleFormValues} label={"Description"} variant="green" required={true}/>
+                <Button  className={buttonStyle} onClick={handleSubmit} type={"submit"}>Add Offer!</Button>
             </div>
         </div>
     )
@@ -62,15 +97,12 @@ const header = css({
 const radioOptions: InputRadioOption[] = [
     {
         value: "Expired",
-        checked: false,
         label: "Expired"
     },{
         value: "Soon to Expire",
-        checked: false,
         label: "Soon to Expire"
     },{
         value: "Not Expired",
-        checked: false,
         label: "Not Expired"
     },
 ]

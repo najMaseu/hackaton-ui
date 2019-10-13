@@ -3,18 +3,19 @@ import { css } from 'emotion';
 import { Colors } from '../../consts';
 import { InputText } from '../InputText/InputText';
 import { Button } from '../Button/Button';
+import { getImages } from '../../_api/requests';
 
 export const Navigation = () => {
     return (
         <div className={navContainer}>
             <h2 className={navHeader}>Where are you?</h2>
             <div style={{width: "90%", marginTop: "20px"}}>
-                <InputText onChange={() => {}} label={"Street"} variant="white"/>
+                <InputText name={"street"} onChange={() => {}} label={"Street"} variant="white"/>
             </div>
             <div style={{width: "90%", marginTop: "20px"}}>
-                <InputText onChange={() => {}} label={"City"} variant="white"/>
+                <InputText name={"city"} onChange={() => {}} label={"City"} variant="white"/>
             </div>
-            <Button onClick={()=>{console.log("dupa")}} className={buttonClass}>Search!</Button>
+            <Button onClick={()=>{getImages("2137").then(res => console.log(res))}} className={buttonClass}>Search!</Button>
         </div>
     )
 }

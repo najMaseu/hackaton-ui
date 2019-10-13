@@ -6,25 +6,27 @@ interface InputAreaProps {
     label: string
     variant: "green" | "white"
     onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void,
-    required?: boolean
+    required?: boolean;
+    name: string;
 }
 
-export const InputArea: React.FC<InputAreaProps> = ({label, variant, onChange,required=false}) => {
+export const InputArea: React.FC<InputAreaProps> = ({name, label, variant, onChange,required=false}) => {
     return(
-        <div className={inputContainer(variant)}>
+        <div className={inputContainer}>
                 <label className={labelClass(variant)}>
                     {label}
                     <textarea 
                     onChange={onChange}
                     className={input(variant)} 
                     required={required}
+                    name={name}
                     />
                 </label>
         </div>
     )
 }
 
-const inputContainer = (color: string) => css({
+const inputContainer = css({
     width: "100%",
     height: "15%"
 })
