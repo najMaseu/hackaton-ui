@@ -50,7 +50,7 @@ const offers = css({
   flexWrap: "wrap",
   justifyContent: "flex-start",
   padding: "10px",
-  height:"100vh",
+  minHeight:"100vh",
   width: "100%",
   gridColumn: "3/10",
   background: "rgba(255,255,255,0.8)"

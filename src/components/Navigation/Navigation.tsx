@@ -15,12 +15,14 @@ export const Navigation = () => {
             <div style={{width: "90%", marginTop: "20px"}}>
                 <InputText name={"city"} onChange={() => {}} label={"City"} variant="white"/>
             </div>
-            <Button onClick={()=>{getImages("2137").then(res => console.log(res))}} className={buttonClass}>Search!</Button>
+            <Button onClick={()=>{}} className={buttonClass}>Search!</Button>
         </div>
     )
 }
 
 const navContainer = css({
+    position: "sticky",
+    top: 0,
     display: "flex",
     flexDirection: "column", 
     justifyContent: "center",
