@@ -7,7 +7,7 @@ import { InputArea } from '../InputArea/InputArea';
 import { Button } from '../Button/Button';
 import { postOffer, postImage } from '../../_api/requests';
 import { useHistory } from 'react-router-dom';
-import uuid = require('uuid');
+import uuid from 'uuid';
 
 export interface FormValues {
     title: string;
@@ -23,7 +23,7 @@ export const AddOfferForm = () => {
     const history = useHistory();
     
     const [formVals, setFormVals] = useState<any>({
-        id: uuid.v4,
+        id: uuid.v4(),
         title: "",
         city: "",
         homeNumber: "",
@@ -44,7 +44,7 @@ export const AddOfferForm = () => {
             await postOffer(formVals)
             inputFile.current && 
             inputFile.current.files && 
-            postImage(inputFile.current.files[0], formVals.title)
+            postImage(inputFile.current.files[0], formVals.id)
             history.push("/offers")
         } catch (e){
             console.warn(e)
