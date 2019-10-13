@@ -75,11 +75,10 @@ const App: React.FC = () => {
 };
 
 const baseStyle = css({
-  backgroundAttachment:"fixed",
-  backgroundPosition:"center",
+  position: "fixed",
   backgroundImage: `url(${background})`,
   backgroundRepeat: "no-repeat",
-  backgroundSize: "cover",
+  backgroundSize: "contain",
   width: "100vw",
   height: "100vw",
   fontFamily: "Mansalva"
