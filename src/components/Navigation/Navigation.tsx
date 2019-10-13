@@ -5,7 +5,7 @@ import { InputText } from '../InputText/InputText';
 import { Button } from '../Button/Button';
 import { getImages } from '../../_api/requests';
 
-export const Navigation = () => {
+export const Navigation = () => {    
     return (
         <div className={navContainer}>
             <h2 className={navHeader}>Where are you?</h2>

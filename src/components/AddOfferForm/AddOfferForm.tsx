@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { InputText } from '../InputText/InputText';
 import { css } from 'emotion';
 import { Colors } from '../../consts';
 import { InputRadio, InputRadioOption } from '../InputRadio/InputRadio';
 import { InputArea } from '../InputArea/InputArea';
 import { Button } from '../Button/Button';
-import { postOffer } from '../../_api/requests';
+import { postOffer, postImage } from '../../_api/requests';
+import { useHistory } from 'react-router-dom';
+import uuid = require('uuid');
 
 export interface FormValues {
     title: string;
@@ -17,32 +19,42 @@ export interface FormValues {
 }
 
 export const AddOfferForm = () => {
+    
+    const history = useHistory();
+    
     const [formVals, setFormVals] = useState<any>({
+        id: uuid.v4,
         title: "",
         city: "",
         homeNumber: "",
         description: "",
         street: "" ,
         expirationStatus: "",
-        phoneNumber: ""
+        phoneNumber: "",
     })
 
     useEffect(() => {
         console.log(formVals)
     }, [formVals])
 
+    const inputFile = useRef<HTMLInputElement>(null)
+
     const handleSubmit = async () => {
         try{
             await postOffer(formVals)
+            inputFile.current && 
+            inputFile.current.files && 
+            postImage(inputFile.current.files[0], formVals.title)
+            history.push("/offers")
         } catch (e){
-            alert(e)
+            console.warn(e)
         }
     }
 
     const handleFormValues = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormVals({
             ...formVals,
-            [e.target.name]: String(e.target.value)
+            [e.target.name]: (e.target.value)
         })
     }
 
@@ -58,6 +70,7 @@ export const AddOfferForm = () => {
                 <InputText name={"city"} onChange={handleFormValues} label={"City"} variant="green" required={true}/>
                 <InputText name={"phoneNumber"} onChange={handleFormValues} label={"Phone Number"} variant="green" type={"number"} required={true}/>
                 <InputRadio name={"expirationStatus"} onChange={handleFormValues} options={radioOptions}/>
+                <input ref={inputFile} name={"image"} type="file"/>
                 <InputArea name={"description"} onChange={handleFormValues} label={"Description"} variant="green" required={true}/>
                 <Button  className={buttonStyle} onClick={handleSubmit} type={"submit"}>Add Offer!</Button>
             </div>
@@ -66,7 +79,7 @@ export const AddOfferForm = () => {
 }
 
 const buttonStyle = css({
-    marginTop: 100,
+    marginTop: 30,
 })
 
 const formContainer = css({
