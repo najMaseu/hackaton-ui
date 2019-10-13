@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { InputText } from '../InputText/InputText';
 import { css } from 'emotion';
 import { Colors } from '../../consts';
@@ -7,6 +7,10 @@ import { InputArea } from '../InputArea/InputArea';
 import { Button } from '../Button/Button';
 
 export const AddOfferForm = () => {
+    const [formVals, setFormVals] = useState({})
+
+    
+
     return (
         <div className={formContainer}>
             <div className={form}>
@@ -20,11 +24,15 @@ export const AddOfferForm = () => {
                 <InputText onChange={() => {}} label={"Phone Number"} variant="green" type={"number"} required={true}/>
                 <InputRadio options={radioOptions}/>
                 <InputArea onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {console.log(e.target.value)}}label={"Description"} variant="green" required={true}/>
-                <Button  onClick={() => {console.log("dsfkjafkjadkjf")}} type={"submit"}>Add Offer!</Button>
+                <Button  className={buttonStyle} onClick={() => {console.log("dsfkjafkjadkjf")}} type={"submit"}>Add Offer!</Button>
             </div>
         </div>
     )
 }
+
+const buttonStyle = css({
+    marginTop: 100,
+})
 
 const formContainer = css({
     background: "rgba(255,255,255,0.8)",

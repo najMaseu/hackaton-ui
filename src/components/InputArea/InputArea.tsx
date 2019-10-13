@@ -32,16 +32,16 @@ const input = (color: string = Colors.white) => css({
     background: "transparent",
     outline:"none",
     borderWidth: 3,
-    borderColor: color,
+    borderColor: color === Colors.white ? Colors.white : Colors.greenDark,
     width: "100%",
-    color: color,
+    color: color === Colors.white ? Colors.white : Colors.greenDark,
     fontFamily: "system-ui",
     fontWeight: "lighter",
     fontSize: ".9em",
     height: "100%",
     resize: "none",
     "&::placeholder": {
-        color: color
+        color: color === Colors.white ? Colors.white : Colors.greenDark
     }
 })
 

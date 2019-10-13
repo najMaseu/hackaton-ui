@@ -25,7 +25,7 @@ export const InputText: React.FC<InputTextProps> = ({label, variant, onChange, t
 };
 
 const inputContainer = (color: string = Colors.white) => css({
-    borderBottom: `3px solid ${color}`,
+    borderBottom: `3px solid ${color === Colors.white ? Colors.white : Colors.greenDark}`,
     width: "100%",
     paddingBottom: "5px"
 });
@@ -39,9 +39,9 @@ const input = (color: string = Colors.white) => css({
     fontFamily: "system-ui",
     fontWeight: "lighter",
     fontSize: "20px",
-    color: color,
+    color: color === Colors.white ? Colors.white : Colors.greenDark,
     "&::placeholder": {
-        color: color,
+        color: color === Colors.white ? Colors.white : Colors.greenDark ,
         fontFamily: "Mansalva",
         fontSize: "1.5em",
     }

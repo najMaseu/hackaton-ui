@@ -24,8 +24,9 @@ const buttonStyles = css({
   fontSize: 32,
   padding: 20,
   fontFamily: "Mansalva",
+  minWidth: "200px",
   outline: "none",
-  marginTop: 100,
+  marginTop: 10,
   '&:hover': {
     opacity: 0.85,
   }
