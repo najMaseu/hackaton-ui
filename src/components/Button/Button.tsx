@@ -7,10 +7,11 @@ interface ButtonProps {
   disabled?: boolean;
   style?: CSSProperties
   className?: string
+  type?: 'button' | 'reset' | 'submit'
 }
 
-export const Button: React.FC<ButtonProps> = ({onClick, children, disabled, style, className}) => (
-  <button style={style} className={cx(buttonStyles, className)} disabled={disabled} onClick={onClick}>{children}</button>
+export const Button: React.FC<ButtonProps> = ({onClick, children, disabled, style, className, type="button"}) => (
+  <button type={type} style={style} className={cx(buttonStyles, className)} disabled={disabled} onClick={onClick}>{children}</button>
 );
 
 const buttonStyles = css({
@@ -18,15 +19,13 @@ const buttonStyles = css({
   background: Colors.greenDark,
   transitionDuration: '0.3s',
   border: "none",
-  maxWidth: "320px",
-  minWidth: "220px",
   color: '#fff',
   fontWeight: 'lighter',
   fontSize: 32,
   padding: 20,
   fontFamily: "Mansalva",
   outline: "none",
-  marginTop: 10,
+  marginTop: 100,
   '&:hover': {
     opacity: 0.85,
   }

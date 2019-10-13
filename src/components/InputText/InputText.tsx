@@ -6,10 +6,11 @@ interface InputTextProps {
     label: string
     variant: "green" | "white"
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-    type?: string
+    type?: string;
+    required?: boolean
 }
 
-export const InputText: React.FC<InputTextProps> = ({label, variant, onChange, type="text"}) => {
+export const InputText: React.FC<InputTextProps> = ({label, variant, onChange, type="text", required=false}) => {
     return(
         <div className={inputContainer(variant)}>
                 <input 
@@ -17,18 +18,19 @@ export const InputText: React.FC<InputTextProps> = ({label, variant, onChange, t
                 placeholder={label}
                 className={input(variant)} 
                 type={type}
+                required={required}
                 />
         </div>
     )
 };
 
-const inputContainer = (color: string) => css({
-    borderBottom: `3px solid ${color === Colors.white ? Colors.white : Colors.greenDark}`,
+const inputContainer = (color: string = Colors.white) => css({
+    borderBottom: `3px solid ${color}`,
     width: "100%",
     paddingBottom: "5px"
 });
 
-const input = (color: string) => css({
+const input = (color: string = Colors.white) => css({
     background: "transparent",
     outline:"none",
     border: "none",
@@ -37,9 +39,9 @@ const input = (color: string) => css({
     fontFamily: "system-ui",
     fontWeight: "lighter",
     fontSize: "20px",
-    color: color === Colors.white ? Colors.white : Colors.greenDark ,
+    color: color,
     "&::placeholder": {
-        color: color === Colors.white ? Colors.white : Colors.greenDark,
+        color: color,
         fontFamily: "Mansalva",
         fontSize: "1.5em",
     }

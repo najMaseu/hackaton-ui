@@ -14,13 +14,13 @@ export const AddOfferForm = () => {
                     Add Offer!
                 </h1>
                 <InputText onChange={(e: React.ChangeEvent<HTMLInputElement>) => {console.log(e.target.value)}}label={"Title"} variant="green"/>
-                <InputText onChange={() => {}} label={"Street"} variant="green"/>
-                <InputText onChange={() => {}} label={"Home number"} variant="green" type={"number"}/>
-                <InputText onChange={() => {}} label={"City"} variant="green"/>
-                <InputText onChange={() => {}} label={"Phone Number"} variant="green" type={"number"}/>
+                <InputText onChange={() => {}} label={"Street"} variant="green" required={true}/>
+                <InputText onChange={() => {}} label={"Home number"} variant="green" type={"number"} required={true}/>
+                <InputText onChange={() => {}} label={"City"} variant="green" required={true}/>
+                <InputText onChange={() => {}} label={"Phone Number"} variant="green" type={"number"} required={true}/>
                 <InputRadio options={radioOptions}/>
-                <InputArea onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {console.log(e.target.value)}}label={"Description"} variant="green"/>
-                <Button  onClick={() => {console.log("dsfkjafkjadkjf")}}>Add Offer!</Button>
+                <InputArea onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {console.log(e.target.value)}}label={"Description"} variant="green" required={true}/>
+                <Button  onClick={() => {console.log("dsfkjafkjadkjf")}} type={"submit"}>Add Offer!</Button>
             </div>
         </div>
     )

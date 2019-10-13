@@ -5,10 +5,11 @@ import { Colors } from "../../consts";
 interface InputAreaProps {
     label: string
     variant: "green" | "white"
-    onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void
+    onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void,
+    required?: boolean
 }
 
-export const InputArea: React.FC<InputAreaProps> = ({label, variant, onChange}) => {
+export const InputArea: React.FC<InputAreaProps> = ({label, variant, onChange,required=false}) => {
     return(
         <div className={inputContainer(variant)}>
                 <label className={labelClass(variant)}>
@@ -16,6 +17,7 @@ export const InputArea: React.FC<InputAreaProps> = ({label, variant, onChange}) 
                     <textarea 
                     onChange={onChange}
                     className={input(variant)} 
+                    required={required}
                     />
                 </label>
         </div>
@@ -26,19 +28,20 @@ const inputContainer = (color: string) => css({
     width: "100%",
     height: "15%"
 })
-const input = (color: string) => css({
+const input = (color: string = Colors.white) => css({
     background: "transparent",
     outline:"none",
     borderWidth: 3,
-    borderColor: color === Colors.white ? Colors.white : Colors.greenDark ,
+    borderColor: color,
     width: "100%",
-    color: color === Colors.white ? Colors.white : Colors.greenDark ,
+    color: color,
     fontFamily: "system-ui",
     fontWeight: "lighter",
     fontSize: ".9em",
     height: "100%",
+    resize: "none",
     "&::placeholder": {
-        color: color === Colors.white ? Colors.white : Colors.greenDark
+        color: color
     }
 })
 
