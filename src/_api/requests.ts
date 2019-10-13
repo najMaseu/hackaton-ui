@@ -2,7 +2,7 @@ import axios from './config';
 import { FormValues } from '../components/AddOfferForm/AddOfferForm';
 
 export const getOffers = async () => {
-  const response = await axios.get('/all');
+  const response = await axios.get('/offers/all');
   return response.data;
 };
 

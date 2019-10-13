@@ -10,12 +10,15 @@ import { useHistory } from 'react-router-dom';
 import uuid from 'uuid';
 
 export interface FormValues {
-    title: string;
-    city: string;
-    homeNumber: string;
-    description: string;
-    street: string;
-    expiration: string
+    title?: string;
+    city?: string;
+    homeNumber?: string;
+    phoneNumber?: string;
+    expirationStatus?: string
+    description?: string;
+    street?: string;
+    expiration?: string;
+    photo?: string;
 }
 
 export const AddOfferForm = () => {
